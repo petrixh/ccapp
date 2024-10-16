@@ -40,14 +40,6 @@ jobs:
 
     - name: Create new tag
       if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-        git tag ${{ env.new_tag }}
-        git push origin ${{ env.new_tag }}
-
-    - name: Create new tag
-      if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
       env:
         GH_PAT_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
       run: |
