@@ -10,10 +10,12 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 
+import jakarta.annotation.security.PermitAll;
+
 @PageTitle("Hello World")
 @Menu(icon = "line-awesome/svg/globe-solid.svg", order = 0)
 @Route(value = "")
-@RouteAlias(value = "")
+@PermitAll
 public class HelloWorldView extends HorizontalLayout {
 
     private TextField name;

@@ -9,9 +9,12 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 
+import jakarta.annotation.security.PermitAll;
+
 @PageTitle("Empty")
 @Menu(icon = "line-awesome/svg/file.svg", order = 1)
 @Route(value = "empty")
+@PermitAll
 public class EmptyView extends VerticalLayout {
 
     public EmptyView() {
