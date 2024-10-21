@@ -1,8 +1,7 @@
 # Build and deploy to Minikube
 
 ```
-./mvnw clean package -Pproduction && docker buildx build -t ccapp:1.0.0 .
-&& minikube image load ccapp:1.0.0
+./mvnw clean package -Pproduction && docker buildx build -t ccapp:1.0.0 . && minikube image load ccapp:1.0.0
 ```
 
 # Custom project from Hilla
