@@ -1,3 +1,9 @@
+# Build and deploy to Minikube
+
+```
+./mvnw clean package -Pproduction && docker buildx build -t ccapp:1.0.0 . && minikube image load ccapp:1.0.0
+```
+
 # Custom project from Hilla
 
 This project can be used as a starting point to create your own Hilla application with Spring Boot.
