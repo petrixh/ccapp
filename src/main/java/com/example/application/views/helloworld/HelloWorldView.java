@@ -37,8 +37,9 @@ public class HelloWorldView extends VerticalLayout {
         add(hl);
 
         //Only add the logut button if there is an auth context... 
-        if(authenticationContext != null){
+        if(authenticationContext != null && authenticationContext.isAuthenticated()){
             add(new Button("Logout", e -> authenticationContext.logout()));
+            //add(new Text("Auth ctx: " + authenticationContext.getPrincipalName().orElse("null")));
         }
     }
 

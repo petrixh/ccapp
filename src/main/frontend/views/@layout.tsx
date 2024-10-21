@@ -20,7 +20,7 @@ export default function MainLayout() {
 
   useEffect(() => {
     documentTitleSignal.value = currentTitle;
-    console.log(location);
+    //console.log(location);
     // If no pathname given, navigate to default Flow view
     if (location && (location.pathname === "" || location.pathname === "/")) {
       window.location.replace("/hello");
