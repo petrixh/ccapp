@@ -1,5 +1,7 @@
 package com.example.application.views.empty;
 
+import static com.vaadin.flow.i18n.I18NProvider.translate;
+
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
@@ -24,10 +26,10 @@ public class EmptyView extends VerticalLayout {
         img.setWidth("200px");
         add(img);
 
-        H2 header = new H2("This place intentionally left empty");
+        H2 header = new H2(translate("empty.view.empty.place"));
         header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
         add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+        add(new Paragraph(translate("empty.view.paragraph")));
 
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);

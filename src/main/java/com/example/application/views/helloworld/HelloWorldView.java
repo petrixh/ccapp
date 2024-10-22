@@ -1,5 +1,7 @@
 package com.example.application.views.helloworld;
 
+import static com.vaadin.flow.i18n.I18NProvider.translate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.component.Key;
@@ -25,8 +27,8 @@ public class HelloWorldView extends VerticalLayout {
     private Button sayHello;
 
     public HelloWorldView(@Autowired AuthenticationContext authenticationContext) {
-        name = new TextField("Your name");
-        sayHello = new Button("Say hello");
+        name = new TextField(translate("hello.field.your.name"));
+        sayHello = new Button(translate("hello.btn.say.hello"));
         sayHello.addClickListener(e -> {
             Notification.show("Hello " + name.getValue());
         });

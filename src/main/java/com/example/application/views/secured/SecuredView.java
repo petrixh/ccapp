@@ -1,5 +1,7 @@
 package com.example.application.views.secured;
 
+import static com.vaadin.flow.i18n.I18NProvider.translate;
+
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
@@ -16,7 +18,7 @@ public class SecuredView extends VerticalLayout{
 
     
     public SecuredView(){
-        add(new Text("Secured view, admins eyes only..."));
+        add(new Text(translate("view.secured.text")));
     }
 
 
