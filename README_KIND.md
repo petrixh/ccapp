@@ -80,7 +80,7 @@ with the public ip for the `ingress-nginx-controller`, for instance:
 
 If you update the hosts file before clicking on "Go to Dashboard" the transition from the wizard to keycloak should work. If not, update the hosts file and navigate to http://localhost:8000/startup 
 
-Once logged in, control-center should be ready to use, refer to minikube instructions https://hub.docker.com/repository/docker/petrivaadin/control-center-testing/general for additional configs etc.. 
+Once logged in, control-center should be ready to use, refer to minikube instructions [](https://github.com/petrixh/ccapp/blob/main/README_MINIKUBE.md) for additional configs etc.. 
 
 Refer to Kind documentation for how to deploy local docker images: [
 ](https://kind.sigs.k8s.io/docs/user/quick-start/#loading-an-image-into-your-cluster)
