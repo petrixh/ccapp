@@ -52,7 +52,7 @@ kubectl port-forward control-center-689978d4c8-kx52x 8000:8080 -n control-center
 2. Give the application a suitable name for instance `ccapp`
 3. In the "Image" field enter: 
 ```
-petrivaadin/control-center-testing:1.0.1
+petrivaadin/control-center-testing:latest
 ```
 4. Set "Hostname" to `ccapp.local` or what ever you had set in your `/etc/hosts`
 5. Leve other options off (i.e. no secure connections, identity management, localisations etc. the app is very minimal and intended to test that the env. is working, not demonstrate features)
