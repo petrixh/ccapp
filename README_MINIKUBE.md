@@ -28,7 +28,7 @@ or a specifcic version of ControlCenter (1.0.0 for instance):
 helm install control-center oci://docker.io/vaadin/control-center --version 1.0.0 -n control-center --create-namespace --set serviceAccount.clusterAdmin=true --set service.type=LoadBalancer --set service.port=8000 --wait
 ```
 
-6. portforward port 8080 from CC to 8000 to follow tutorial, find the pod with `kubectl get pods --all-namespaces` :
+6. portforward localhost:8000 to the CC node port 8080 in order to follow tutorial. (You can find the pod name with `kubectl get pods --all-namespaces` ) :
 ```
 kubectl port-forward control-center-689978d4c8-kx52x 8000:8080 -n control-center
 ```
