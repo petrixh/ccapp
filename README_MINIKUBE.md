@@ -13,7 +13,7 @@
 ```
    minikube start
 ```
-   see below for handy script to delete and recreate with set amoutn of ram and cpus... 
+   see below for handy script to delete and recreate with set amount of ram and cpus... Control Center needs aobut 4G of ram with a small Vaadin app deployed.  
 
 3. turn on minikube tunnel (needs sudo and takes a few seconds)
 ```
@@ -32,20 +32,18 @@ helm install control-center oci://docker.io/vaadin/control-center --version 1.0.
 ```
 kubectl port-forward control-center-689978d4c8-kx52x 8000:8080 -n control-center
 ```
-8. navigate to http://localhost:8000
-6 follow tutorial to get password from logs, use *keycloak.local* as keycloak name, remember the email address and password for KC realm (you'll need it later)
+8. navigate to http://localhost:8000 and follow tutorial to get the password from logs etc. Use *keycloak.local* as keycloak name, remember the email address and password for KC realm (you'll need it later)
 9. If the installation fails just hit retry... it'll succeed eventually... 
-	TODO: check if actually necessary: Once installed, restart minikube (just in case) and re-enable the 8000-port tunnel and make sure minikube tunnel is still running
 
-8. look at external IP's for your ingress-controller through `kubectl get svc --all-namespaces`
-9. update `sudo nano /etc/hosts` entries to match, for instance: 
+10. look at external IP's for your ingress-controller through `kubectl get svc --all-namespaces`
+11. update `sudo nano /etc/hosts` entries to match, for instance: 
 
 	* 10.107.151.82   keycloak.local
 	* 10.107.151.82   ccapp.local
 	* 10.107.151.82   preview.ccapp.local
 
-10. on http://localhost:8000 you'll have ControlCenter UI where you can deploy apps.. 
-11. on https://ccapp.local you'll eventually have an app (hopefully)
+12. on http://localhost:8000 you'll have ControlCenter UI where you can deploy apps.. 
+13. on https://ccapp.local you'll eventually have an app (hopefully)
 
 ## Use a preeixting testing app
 1. Navigate to the Control Center deployment UI "Applications -> Discovery" press "Deploy"
