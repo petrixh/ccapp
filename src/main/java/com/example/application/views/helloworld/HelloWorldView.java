@@ -4,6 +4,7 @@ import static com.vaadin.flow.i18n.I18NProvider.translate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
@@ -19,7 +20,7 @@ import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("Hello World")
 @Menu(icon = "line-awesome/svg/globe-solid.svg", order = 0)
-@Route(value = "hello")
+@Route(value = "" , layout=MainLayout.class)
 @RolesAllowed({"user", "admin"})
 public class HelloWorldView extends VerticalLayout {
 

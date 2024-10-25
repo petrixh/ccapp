@@ -2,6 +2,7 @@ package com.example.application.views.empty;
 
 import static com.vaadin.flow.i18n.I18NProvider.translate;
 
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
@@ -15,7 +16,7 @@ import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("Empty")
 @Menu(icon = "line-awesome/svg/file.svg", order = 1)
-@Route(value = "empty")
+@Route(value = "empty", layout=MainLayout.class)
 @RolesAllowed({"user", "admin"})
 public class EmptyView extends VerticalLayout {
 
