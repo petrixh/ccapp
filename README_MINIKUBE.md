@@ -71,7 +71,7 @@ ingress-nginx    ingress-nginx-controller-admission   ClusterIP      10.97.189.2
 kube-system      kube-dns                             ClusterIP      10.96.0.10       <none>          53/UDP,53/TCP,9153/TCP       32d
 ```
 
-where the line you're looking for is the ingregess with ports 80 and 443, so in the example above it would be this: 
+where the line you're looking for is the ingregess with ports 80 and 443, so in the example above it would be this (if there is no "External IP" check your `minikube tunnel` command is working) : 
 
 ```
 ingress-nginx    ingress-nginx-controller             LoadBalancer   10.99.205.130    10.99.205.130   80:31270/TCP,443:31459/TCP   32d
