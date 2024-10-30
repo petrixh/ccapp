@@ -28,7 +28,7 @@ or a specifcic version of ControlCenter (1.0.0 for instance):
 helm install control-center oci://docker.io/vaadin/control-center --version 1.0.0 -n control-center --create-namespace --set serviceAccount.clusterAdmin=true --set service.type=LoadBalancer --set service.port=8000 --wait
 ```
 
-6. (This might not be neede on MacOS or Windows) portforward localhost:8000 to the CC node port 8080 in order to follow tutorial:  
+6. (This might not be needed on MacOS or Windows) portforward localhost:8000 to the CC node port 8080 in order to follow tutorial:  
 You can find the pod name with: 
 
 ```
