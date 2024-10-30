@@ -135,7 +135,7 @@ Create an app:
 7. Modify your pom.xml and add the dependency... 
 
 8. if you're doing this before actual release change the version of `control-center-start` to `1.0-SNAPSHOT` as that seems to be published somewhere
-9. *Running locally* On the cluster this is somehow injectec, but if you want to run it locally from now on, in your `Application.java` class, add a new bean for the ControlCenterI18nProperties: 
+9. *Running locally:* On the cluster this is somehow injected, but if you want to run it locally from now on, in your `Application.java` class, add a new bean for the ControlCenterI18nProperties: 
     
 ```
     @Bean
@@ -143,6 +143,8 @@ Create an app:
         return new ControlCenterI18NProperties();
     }  
 ```
+
+*Note: This bean should not be included on builds that run on a kuberetes cluster* TODO: add notes about using profiles if this is needed in the future as well... For now a workaround for running locally.. 
 
 9. Recompile again with 
 ```
