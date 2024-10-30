@@ -28,15 +28,62 @@ or a specifcic version of ControlCenter (1.0.0 for instance):
 helm install control-center oci://docker.io/vaadin/control-center --version 1.0.0 -n control-center --create-namespace --set serviceAccount.clusterAdmin=true --set service.type=LoadBalancer --set service.port=8000 --wait
 ```
 
-6. portforward localhost:8000 to the CC node port 8080 in order to follow tutorial. (You can find the pod name with `kubectl get pods --all-namespaces` ) :
+6. portforward localhost:8000 to the CC node port 8080 in order to follow tutorial:  
+You can find the pod name with: 
+
+```
+kubectl get pods --all-namespaces
+``` 
+
+And then port forward like this: 
+
 ```
 kubectl port-forward control-center-689978d4c8-kx52x 8000:8080 -n control-center
 ```
-8. navigate to http://localhost:8000 and follow tutorial to get the password from logs etc. Use *keycloak.local* as keycloak name, remember the email address and password for KC realm (you'll need it later)
-9. If the installation fails just hit retry... it'll succeed eventually... 
 
-10. look at external IP's for your ingress-controller through `kubectl get svc --all-namespaces`
-11. update `sudo nano /etc/hosts` entries to match, for instance: 
+7. navigate to http://localhost:8000 and follow tutorial to get the password from logs etc. Use *keycloak.local* as keycloak name, remember the email address and password for KC realm (you'll need it later) (If the installation fails just hit retry... it'll succeed eventually...)
+
+8. Find the external ip for your `ingress-nginx-controller` for instance with:
+
+```
+kubectl get svc -A
+```
+
+it should look something like this: 
+
+```
+deb@deb-desk:~$ kubectl get svc -A
+NAMESPACE        NAME                                 TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
+cert-manager     cert-manager                         ClusterIP      10.109.130.95    <none>          9402/TCP                     32d
+cert-manager     cert-manager-webhook                 ClusterIP      10.109.114.7     <none>          443/TCP                      32d
+cnpg-system      cnpg-webhook-service                 ClusterIP      10.99.170.32     <none>          443/TCP                      32d
+control-center   ccapp                                ClusterIP      10.97.203.67     <none>          8080/TCP                     30d
+control-center   control-center                       LoadBalancer   10.101.43.73     10.101.43.73    8000:31428/TCP               32d
+control-center   control-center-keycloak-discovery    ClusterIP      None             <none>          7800/TCP                     32d
+control-center   control-center-keycloak-service      ClusterIP      10.110.207.226   <none>          8180/TCP,8543/TCP,9000/TCP   32d
+control-center   control-center-postgres-r            ClusterIP      10.100.177.161   <none>          5432/TCP                     32d
+control-center   control-center-postgres-ro           ClusterIP      10.110.43.38     <none>          5432/TCP                     32d
+control-center   control-center-postgres-rw           ClusterIP      10.109.204.17    <none>          5432/TCP                     32d
+control-center   keycloak-operator                    ClusterIP      10.99.193.140    <none>          80/TCP                       32d
+default          kubernetes                           ClusterIP      10.96.0.1        <none>          443/TCP                      32d
+ingress-nginx    ingress-nginx-controller             LoadBalancer   10.99.205.130    10.99.205.130   80:31270/TCP,443:31459/TCP   32d
+ingress-nginx    ingress-nginx-controller-admission   ClusterIP      10.97.189.25     <none>          443/TCP                      32d
+kube-system      kube-dns                             ClusterIP      10.96.0.10       <none>          53/UDP,53/TCP,9153/TCP       32d
+```
+
+where the line you're looking for is the ingregess with ports 80 and 443, so in the example above it would be this: 
+
+```
+ingress-nginx    ingress-nginx-controller             LoadBalancer   10.99.205.130    10.99.205.130   80:31270/TCP,443:31459/TCP   32d
+```
+
+in theory, the control center UI should be under: 
+
+```
+control-center   control-center                       LoadBalancer   10.101.43.73     10.101.43.73    8000:31428/TCP               32d
+```
+
+9. update `sudo nano /etc/hosts` entries to match, for instance: 
 
 	* 10.107.151.82   keycloak.local
 	* 10.107.151.82   ccapp.local
