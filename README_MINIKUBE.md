@@ -89,6 +89,8 @@ control-center   control-center                       LoadBalancer   10.101.43.7
 	* 10.107.151.82   ccapp.local
 	* 10.107.151.82   preview.ccapp.local
 
+*NOTE: If you delete and recreate the minikube node, the External IP's will change so you'll need to update the hosts file*
+
 12. on http://localhost:8000 you'll have ControlCenter UI where you can deploy apps.. 
 13. on https://ccapp.local you'll eventually have an app (hopefully)
 
