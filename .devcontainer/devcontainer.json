@@ -1,0 +1,26 @@
+{
+  "name": "CC App - Java 17 Dev Container",
+  //"dockerComposeFile": ["docker-compose-devcontainer.yml", "../docker-compose.yml",],
+  "dockerComposeFile": ["docker-compose-devcontainer.yml"],
+  // Forward port 8444 through VS Code to the development host machine
+  //"forwardPorts": [8444],
+  // Forward port 8443 to the devcontainer host machine
+  //"runArgs": ["-p", "8443:8443"],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "extensions": [
+    "vscjava.vscode-java-pack"
+  ],
+  "features": {
+    //Ok for dev testint, DON'T DO THIS IN PRODUCTION has potential security implications!
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "true",
+      "moby": "true"
+    }
+  },
+  // Ensure we can run and execute the scripts under the scripts folder for the devcontainer after it has been created. 
+  "postCreateCommand": "echo '\n********\nMaking scripts under .devcontainer/scripts/*.sh owned by user ubuntu and executable. Running post create script...\n********' && chown ubuntu:ubuntu ./.devcontainer/scripts/*.sh && chmod +x ./.devcontainer/scripts/*.sh && /workspace/.devcontainer/scripts/postCreateScript.sh"
+  
+}
