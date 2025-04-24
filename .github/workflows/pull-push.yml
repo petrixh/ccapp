@@ -1,0 +1,28 @@
+name: Maven Build and Run Tests 
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+#      env:
+#         VAADIN_OFFLINE_KEY: ${{ secrets.VAADIN_PRODMODE_CI_SERVER_KEY }}
+      run: mvn -B clean package -Pproduction --file pom.xml

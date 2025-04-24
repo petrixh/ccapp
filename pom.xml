@@ -11,13 +11,13 @@
 
     <properties>
         <java.version>17</java.version>
-        <vaadin.version>24.5.0</vaadin.version>
+        <vaadin.version>24.7.1</vaadin.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
+        <version>3.4.4</version>
     </parent>
 
     <repositories>
@@ -94,10 +94,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-    <groupId>com.vaadin</groupId>
-    <artifactId>control-center-starter</artifactId>
-   <!-- <version>1.0-SNAPSHOT</version> -->
-</dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>control-center-starter</artifactId>
+        <!-- <version>1.0-SNAPSHOT</version> -->
+        </dependency>
     </dependencies>
 
     <build>
