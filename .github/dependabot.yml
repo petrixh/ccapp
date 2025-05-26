@@ -26,27 +26,6 @@ updates:
         update-types:
           - "major"
           
-  - package-ecosystem: "docker-compose" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "weekly"
-    groups:
-      patch-updates:
-        patterns:
-          - "*"
-        update-types:
-          - "patch"
-      minor-updates:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-      major-updates:
-        patterns:
-          - "*"
-        update-types:
-          - "major"
-
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
