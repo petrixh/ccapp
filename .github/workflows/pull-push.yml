@@ -26,3 +26,16 @@ jobs:
 #      env:
 #         VAADIN_OFFLINE_KEY: ${{ secrets.VAADIN_PRODMODE_CI_SERVER_KEY }}
       run: mvn -B clean package -Pproduction --file pom.xml
+
+    - name: Build test container
+      run: docker build . -t ccapp:latest-test 
+
+    # Run the continaer
+    - name: Run test container
+      run: docker run -p 8080:8080 ccapp:latest-test
+
+    # TODO, one day make a proper test for this... 
+    - name: Do a quick curl test just to see if the app is running
+      run: |
+        sleep 20
+        curl -f http://localhost:8080/ || exit 1
