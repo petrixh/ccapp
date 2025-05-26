@@ -32,10 +32,15 @@ jobs:
 
     # Run the continaer
     - name: Run test container
-      run: docker run -d -p 8080:8080 ccapp:latest-test
+      run: docker run -d --name ccapp-test -p 8080:8080 ccapp:latest-test
 
     # TODO, one day make a proper test for this... 
     - name: Do a quick curl test just to see if the app is running
       run: |
         sleep 20
         curl -f http://localhost:8080/ || exit 1
+
+    - name: Stop and remove container
+      run: |
+        docker stop ccapp-test
+        docker rm ccapp-test
