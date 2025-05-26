@@ -10,12 +10,16 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      minor-and-patch-updates:
+      patch-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+      minor-updates:
         patterns:
           - "*"
         update-types:
           - "minor"
-          - "patch"
       major-updates:
         patterns:
           - "*"
@@ -27,12 +31,16 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      minor-and-patch-updates:
+      patch-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+      minor-updates:
         patterns:
           - "*"
         update-types:
           - "minor"
-          - "patch"
       major-updates:
         patterns:
           - "*"
@@ -44,12 +52,16 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      minor-and-patch-updates:
+      patch-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+      minor-updates:
         patterns:
           - "*"
         update-types:
           - "minor"
-          - "patch"
       major-updates:
         patterns:
           - "*"
