@@ -35,12 +35,29 @@ jobs:
       run: docker run -d --name ccapp-test -p 8080:8080 ccapp:latest-test
 
     # TODO, one day make a proper test for this... 
-    - name: Do a quick curl test just to see if the app is running
+    - name: Wait for app to be ready (max 20s) and test with curl
       run: |
-        sleep 20
-        curl -f http://localhost:8080/ || exit 1
+        for i in {1..20}; do
+          if curl -f http://localhost:8080/; then
+          exit 0
+          fi
+          sleep 1
+        done
+        echo "App did not become ready in 20 seconds"
+        exit 1
+
+    # Print docker logs
+    - name: Print container logs
+      run: docker logs ccapp-test
 
     - name: Stop and remove container
       run: |
         docker stop ccapp-test
         docker rm ccapp-test
+
+    # If fail, print docker logs
+    - name: Print docker logs if build fails
+      if: failure()
+      run: docker logs ccapp-test || true
+
+    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
